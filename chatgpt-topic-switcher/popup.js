@@ -1,0 +1,1 @@
+document.querySelector("#clear").addEventListener("click", async () => { const [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); if (!tab?.id) return; await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: () => { localStorage.removeItem("chatgpt_topic_state"); alert("当前主题记录已清除"); } }); });

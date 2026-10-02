@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Topic Switcher",
+  "version": "0.1.0",
+  "description": "检测 ChatGPT 对话是否切换主题，并帮助开启新会话。",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "ChatGPT Topic Switcher", "default_popup": "popup.html" },
+  "content_scripts": [{
+    "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }]
+}
